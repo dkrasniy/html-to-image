@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="css/tailwind.min.css" >
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+      <link rel="stylesheet" href="../VYF/scss/custom.css">
+      <title>image</title>
+      <style>
+        .circle {
+            height: 18px;
+            width: 18px;
+            display: block;
+            border-radius: 100%;
+            color: #fff;
+            background: #30B34E;
+            margin: 0 auto;
+            margin-top: 20px;
+            z-index: 10;
+            position: relative;
+            display: flex;
+            font-size: 11px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .routing-stop {
+            position: relative;
+            flex: 1;
+        }
+
+
+        .routing-stop::after {
+            position: absolute;
+            content: "";
+            background: #eee;
+            left: 100%;
+            bottom: 8px;
+            left: calc(50% + 8px);
+            height: 4px;
+            width: 100%;
+            background: #2fb24e;
+        }
+
+        span.name {
+            font-size: 13px;
+            display: block;
+            text-align: center;
+            line-height: 1.25;
+        }
+        
+        span.status {
+            display: block;
+            font-size: .9em;
+            color:#717171;
+        }
+
+        .routing-stop:last-child::after {
+            content: none;
+        }
+        /* .routing-stop:first-child .circle {
+            margin-left: 0;
+        }
+        .routing-stop:first-child::after {
+            left: calc(0% + 12px);
+            width: 200%;
+        } */
+
+        
+        
+        </style>
+   </head>
+   <body class="bg-gray-100">
+         <div class="max-w-2xl mx-auto bg-white">
+            <div class="flex" id="takepicofthis">
+                <div class="routing-stop" data-status="completed"><span class="name">David Krasniy<span class="status">Signed All</span></span>
+                <span class="circle"><i class="fas icon-placeholder"></i></span></div>
+
+                <div class="routing-stop" data-status="completed" ><span class="name">Paul Makhnovskiy<span class="status">Signed All</span></span>
+                    <span class="circle"><i class="fas icon-placeholder"></i></span></div>
+
+                <div class="routing-stop" data-status="delivered"><span class="name">Joe Puli<span class="status">Delivered</span></span>
+                <span class="circle"><i class="fas icon-placeholder"></i></span></div>
+
+                <div class="routing-stop" data-status="queued"><span class="name">Andrew Studer<span class="status">Queued</span></span>
+                    <span class="circle"><i class="fas icon-placeholder"></i></span></div>
+
+                <div class="routing-stop" data-status="queued"><span class="name">Timothy Taylor<span class="status">Queued</span></span>
+                    <span class="circle"><i class="fas icon-placeholder"></i></span></div>
+
+            </div>
+        </div>
+
+        <div class="max-w-2xl mx-auto m-12" id="appendimghere">
+            <p>Generated image</p>
+          
+        </div>
+        <span id="base63txt"  class="block" style="font-size:7px;    overflow-wrap: break-word;"></span>
+     
+      
+      <!-- JavaScript -->
+      <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <script>
+            html2canvas(document.querySelector("#takepicofthis")).then(canvas => {
+                var fullQuality = canvas.toDataURL('image/jpeg', 1.0);
+                console.log(fullQuality);
+                document.querySelector("#appendimghere").appendChild(canvas)
+                document.querySelector("#base63txt").innerText = fullQuality;
+           });
+   </script>
+   </body>
+</html>
